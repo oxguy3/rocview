@@ -63,7 +63,11 @@ function initialize() {
     google.maps.event.addListener(marker, 'mouseover', function(event) {
       var cam = findCamByLatLng(event.latLng);
       var currMarker = findMarkerByLatLng(event.latLng);
-      infowindow.setContent('<div id="infowindowContent">' + cam.title + '</div>')
+      var html = '<div id="infowindowContent">';
+      html += '<strong>' + cam.title + '</strong>';
+      html += '<p>' + cam.getPrettyType() + ", " + cam.getPrettyPlacement() + '</p>';
+      html += '</div>';
+      infowindow.setContent(html);
       infowindow.open(map, currMarker);
     });
 
