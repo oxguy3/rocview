@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap 101 Template</title>
+  <title>RocView</title>
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style type="text/css">
@@ -19,44 +19,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv5rBIddH0iZrpSPOuHDzDloxsOo0J_zU"></script>
-  <script type="text/javascript">
-
-  $(document).ready(function(){
-    resizeDiv();
-  });
-
-  window.onresize = function(event) {
-    resizeDiv();
-  }
-
-  function resizeDiv() {
-    vpw = $(window).width();
-    vph = $(window).height();
-    $('#map-canvas').css({'height': vph + 'px'});
-  }
-
-  function initialize() {
-    var mapOptions = {
-      center: { lat: 43.128988, lng: -77.630541},
-      zoom: 16
-    };
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
-  }
-  google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
+  <script src="js/cams.js"></script>
+  <script src="js/index.js"></script>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div id="map-canvas"></div>
-      </div>
-      <div class="col-md-6">
+
+  <div id="camModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="camModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="camModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+          <a href="#" id="camModalLink" class="btn btn-primary">Open stream</a>
+          <div id="camModalPlayer">
+            <!-- <embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" width="960" height="540" autoplay="false" text="Stream loading..." id="vlc0" />
+            <object classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921" codebase="http://download.videolan.org/pub/videolan/vlc/last/win32/axvlc.cab"></object> -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
-        <object type="application/x-vlc-plugin" id="vlc0" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="640" height="360" target="rtsp://172.29.22.9/live.sdp">Unable to load VideoLAN plugin.</object>
-  <!--<object type="application/x-vlc-plugin" id="vlc0" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" autoplay="yes" loop="no" width="1280" height="720" target="rtsp://172.29.22.9/live.sdp">Unable to load VideoLAN plugin.</object>-->
+
+  <div id="map-canvas"></div>
 </body>
 </html>
